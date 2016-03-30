@@ -1,6 +1,6 @@
 app.factory("Auth", ["$firebaseAuth",
   function($firebaseAuth) {
-    var ref = new Firebase("https://radiant-inferno-1395.firebaseio.com/tvattstuga/75/users");
+    var ref = new Firebase("https://facebookblock.firebaseio.com/");
     return $firebaseAuth(ref);
   }
 ]);
@@ -28,7 +28,7 @@ app.controller("authCtrl", ["$scope", "Auth", "$location",
     $scope.auth.$onAuth(function(authData) {
       $scope.authData = authData;
       $scope.redirect = function(){
-        $location.path('/bookedList');
+        $location.path('/welcome');
       };
       if (authData) {
         /* $location.path('/bookedList'); */

@@ -1,0 +1,14 @@
+<div class="container-fluid">
+    <div class="jumbotron center top-buffer">
+      <h2>Du är inloggad!</h2>
+    </div>
+    <div class=""> <!--  Testar login från https://www.firebase.com/docs/web/libraries/angular/guide/user-auth.html -->
+      <div ng-show="authData">
+        <p>Hej, {{ authData.facebook.displayName }}!</p>
+        <button class="btn btn-default" ng-click="auth.$unauth()">Logga ut</button>
+        <button class="btn btn-success" ng-click="redirect()">Till listan</button>
+      </div>
+    </div>
+
+
+</div>

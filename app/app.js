@@ -36,7 +36,12 @@ app.config(function ($routeProvider, $locationProvider) {
                 controller:'authCtrl',
                 templateUrl: '/app/partials/signIn.html'
             })
-      
+        .when('/welcome',
+            {
+                controller:'authCtrl',
+                templateUrl: '/app/partials/welcome.html'
+            })
+
         .otherwise({ redirectTo: '/' });
 
 
