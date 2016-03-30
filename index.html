@@ -22,6 +22,7 @@
     <script src="../app/services/bookingService.js" ></script>
     <script src="../app/factories/factory.js" ></script>
     <script src="../app/filters/customFilter.js" ></script>
+    <script src='https://code.responsivevoice.org/responsivevoice.js'></script>
 
     <!-- Datepicker scripts -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
@@ -30,6 +31,15 @@
   <base href='/'></base>
   </head>
   <body>
+        <input onclick='responsiveVoice.speak("Hello World");' type='button' value='🔊 Play' />
         <div class="ng-view"></div>
+        <script type="text/javascript">
+          $(document).ready(function() {
+             responsiveVoice.OnVoiceReady = function() {
+              console.log("speech time?");
+              responsiveVoice.speak("Haha");
+            };
+          });
+        </script>
   </body>
 </html>
