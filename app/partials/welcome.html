@@ -12,3 +12,24 @@
 
 
 </div>
+
+<div id="fb-root"></div>
+
+  <div class="ng-cloak" ng-show="user.connected">
+  Hello {{user.first_name}}!
+  </div>
+
+  <div class="ng-cloak" ng-hide="user.connected">
+    One moment please...
+  </div>
+
+  <script src="http://connect.facebook.net/en_US/all.js"></script>
+<script>
+    FB.init({
+      appId      : '137710999746808',
+      status     : true,
+      xfbml      : true
+    });
+</script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.5/angular.js"></script>
+  <script src="app.js"></script>

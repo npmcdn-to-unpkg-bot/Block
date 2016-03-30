@@ -1,6 +1,6 @@
 <div class="container-fluid">
     <div class="jumbotron center top-buffer">
-      <h2>Välkommen till tvättstugan!</h2>
+      <h2>Välkommen till Block!</h2>
     </div>
     <div class=""> <!--  Testar login från https://www.firebase.com/docs/web/libraries/angular/guide/user-auth.html -->
       <div ng-show="authData">
@@ -11,44 +11,5 @@
       <div ng-hide="authData">
         <button class="btn btn-primary" ng-click="auth.$authWithOAuthPopup('facebook')">Login med Facebook</button>
       </div>
-    </div>
-
-    <!--
-    <form class="form-signin" role="form">
-        <input ng-model="email" type="email" class="form-control" placeholder="Email address" required="" autofocus="">
-        <input ng-model="password" type="password" class="form-control" placeholder="Password" required="">
-        <label class="checkbox">
-            <button ng-click="createUser()" type="button" name="New User">Ny (mail)användare</button>
-            <button ng-click="facebook()" type="button" name="Facebook-login">Logga in med Facebook</button>
-        </label>
-      <button ng-click="login()"class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-      <div class="" ng-if="authData">
-        <a href="/bookedList" class="btn btn-block btn-primary">Till bokningarna!</a>
-      </div>
-      <p>
-        {{ message }}
-        {{ alert }}
-        {{ alert.message }}
-      </p>
-    </form>
-  -->
+    </div>  
 </div>
-
-<!--
-<div>
-
-  Email: <input type="text" ng-model="email">
-  Password: <input type="text" ng-model="password">
-
-  <br><br>
-
-  <button ng-click="createUser()">Create User</button>
-
-  <br><br>
-
-  <button ng-click="removeUser()">Remove User</button>
-
-  <p ng-if="message">Message: <strong>{{ message }}</strong></p>
-  <p ng-if="error">Error: <strong>{{ error }}</strong></p>
-</div>
--->

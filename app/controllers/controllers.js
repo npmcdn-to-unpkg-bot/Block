@@ -8,20 +8,6 @@ app.factory("Auth", ["$firebaseAuth",
 // and use it in our controller
 app.controller("authCtrl", ["$scope", "Auth", "$location",
   function($scope, Auth, $location) {
-    $scope.createUser = function() {
-      $scope.message = null;
-      $scope.error = null;
-
-      Auth.$createUser({
-        email: $scope.email,
-        password: $scope.password
-      }).then(function(userData) {
-        $scope.message = "User created with uid: " + userData.uid;
-      }).catch(function(error) {
-        $scope.error = error;
-      });
-    };
-
     $scope.auth = Auth;
 
     // any time auth status updates, add the user data to scope
@@ -29,6 +15,7 @@ app.controller("authCtrl", ["$scope", "Auth", "$location",
       $scope.authData = authData;
       $scope.redirect = function(){
         $location.path('/welcome');
+        console.log(authData.facebook);
       };
       if (authData) {
         /* $location.path('/bookedList'); */
@@ -37,35 +24,54 @@ app.controller("authCtrl", ["$scope", "Auth", "$location",
       }
     });
 
-    $scope.login = function () {
-      Auth.$authWithPassword('password', {
-        email: $scope.email,
-        password: $scope.password
-      }).then(function(user) {
-        $scope.alert.message = '';
-      }, function(error) {
-        if (error = 'INVALID_EMAIL') {
-          console.log('email invalid or not signed up — trying to sign you up!');
-          $scope.createUser();
-        } else if (error = 'INVALID_PASSWORD') {
-          console.log('wrong password!');
-        } else {
-          console.log(error);
-        }
-      });
-    }
 
-    $scope.removeUser = function() {
-      $scope.message = null;
-      $scope.error = null;
-      Auth.$removeUser({
-        email: $scope.email,
-        password: $scope.password
-      }).then(function() {
-        $scope.message = "User removed";
-      }).catch(function(error) {
-        $scope.error = error;
-      });
-    };
   }
 ]);
+
+app.controller('MainCtrl', function($scope, Facebook) {
+  $scope.user = Facebook.getUser(FB);
+});
+
+app.service('Facebook', function($q, $rootScope) {
+
+  // resolving or rejecting a promise from a third-party
+  // API such as Facebook must be
+  // performed within $apply so that watchers get
+  // notified of the change
+  resolve = function(errval, retval, deferred) {
+    $rootScope.$apply(function() {
+      if (errval) {
+        deferred.reject(errval);
+      } else {
+        retval.connected = true;
+        deferred.resolve(retval);
+      }
+    });
+  }
+
+  return {
+    getUser: function(FB) {
+      var deferred = $q.defer();
+      FB.getLoginStatus(function(response) {
+        if (response.status == 'connected') {
+          FB.api('/me', function(response) {
+            resolve(null, response, deferred);
+          });
+        } else if (response.status == 'not_authorized') {
+          FB.login(function(response) {
+            if (response.authResponse) {
+              FB.api('/me', function(response) {
+                resolve(null, response, deferred);
+              });
+            } else {
+              resolve(response.error, null, deferred);
+            }
+          });
+        }
+      });
+      promise = deferred.promise;
+      promise.connected = false;
+      return promise;
+    }
+  };
+});

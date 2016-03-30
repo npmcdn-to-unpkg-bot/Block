@@ -18,7 +18,7 @@
 
   #######################################################################*/
 
-var app = angular.module('laundry', [
+var app = angular.module('block', [
   'ngRoute',
   'firebase',
   'ngMessages',
@@ -38,7 +38,7 @@ app.config(function ($routeProvider, $locationProvider) {
             })
         .when('/welcome',
             {
-                controller:'authCtrl',
+                controller:'MainCtrl',
                 templateUrl: '/app/partials/welcome.html'
             })
 
