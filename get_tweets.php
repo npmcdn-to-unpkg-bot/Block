@@ -1,6 +1,9 @@
 <?php
 
 require_once('twitter_proxy.php');
+require "twitteroauth/autoload.php";
+
+use Abraham\TwitterOAuth\TwitterOAuth;
 
 // Twitter OAuth Config options
 $oauth_access_token = '2458218104-3OuDfbBLIpUjmQyP6OgNuLqGkJpAnCnjtDXxQGq';
