@@ -35,7 +35,7 @@ class TwitterProxy {
 
 		$this->config = array_merge($this->config, compact('oauth_access_token', 'oauth_access_token_secret', 'consumer_key', 'consumer_secret', 'user_id', 'screen_name', 'count'));
 
-		$this->whitelist['statuses/user_timeline.json?user_id=' . $this->config['user_id'] . '&screen_name=' . $this->config['screen_name'] . '&count=' . $this->config['count']] = true;
+		$this->whitelist['statuses/home_timeline.json?user_id=' . $this->config['user_id'] . '&screen_name=' . $this->config['screen_name'] . '&count=' . $this->config['count']] = true;
 	}
 
 	private function buildBaseString($baseURI, $method, $params) {

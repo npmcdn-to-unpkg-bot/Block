@@ -9,9 +9,9 @@ $consumer_key = '6rc9u0rc7qEH4nGDTP1ftz1Bi';
 $consumer_secret = 'AQOiyKSf5p7KGuwrYKPg30pbNpd3DFQ07NApAsg1X3WgzNpbzP';
 $user_id = '2458218104';
 $screen_name = 'AlbinMartinsson';
-$count = 5;
+$count = 100;
 
-$twitter_url = 'statuses/user_timeline.json';
+$twitter_url = 'statuses/home_timeline.json';
 $twitter_url .= '?user_id=' . $user_id;
 $twitter_url .= '&screen_name=' . $screen_name;
 $twitter_url .= '&count=' . $count;
