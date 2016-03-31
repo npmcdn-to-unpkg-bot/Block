@@ -1,38 +1,33 @@
 <!DOCTYPE html>
-<html data-ng-app="block">
+<html>
   <head>
     <meta charset="utf-8">
     <title>Block</title>
-
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-
-    <script src="../scripts/angular1.3.15.js"></script>
-    <script src="../scripts/jquery-1.11.3.js"></script>
     <script src="https://cdn.firebase.com/js/client/2.2.7/firebase.js"></script>
-    <script src="https://cdn.firebase.com/libs/angularfire/1.1.1/angularfire.min.js"></script>
-    <script src="../scripts/angular-animate.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-messages.js"></script>
-    <script src="../scripts/angular-route.js"></script>
-    <script src="../app/app.js" ></script>
-    <script src="../app/controllers/controllers.js" ></script>
-    <script src="../app/services/bookingService.js" ></script>
-    <script src="../app/factories/factory.js" ></script>
-    <script src="../app/filters/customFilter.js" ></script>
     <script src='https://code.responsivevoice.org/responsivevoice.js'></script>
-
-  <base href='/'></base>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
   </head>
   <body>
-        <input onclick='responsiveVoice.speak("Hello World");' type='button' value='🔊 Play' />
-        <div class="ng-view"></div>
-      <!--  <script type="text/javascript">
-          $(document).ready(function() {
-             responsiveVoice.OnVoiceReady = function() {
-              console.log("speech time?");
-              responsiveVoice.speak("Haha");
-            };
+      <input onclick='responsiveVoice.speak("Hello World");' type='button' value='🔊 Play' />
+        <script type="text/javascript">
+          var authData = [];
+          var ref = new Firebase("https://facebookblock.firebaseio.com");
+          ref.authWithOAuthPopup("facebook", function(error, authData) {
+            if (error) {
+              console.log("Login Failed!", error);
+            } else {
+              console.log("Authenticated successfully with payload:", authData);
+              return authData;
+            }
           });
-        </script> -->
+        </script>
+        
+
+        <script type="text/javascript">
+          $(document).ready(function() {
+              console.log("speech time?");
+              console.log(authData.facebook.displayName);
+          });
+        </script>
   </body>
 </html>
