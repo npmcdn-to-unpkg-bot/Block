@@ -3,14 +3,35 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Twitter v1.1 API - A JavaScript and PHP solution</title>
+		<link rel="stylesheet" href="https://npmcdn.com/flickity@1.2/dist/flickity.min.css">
+		<link rel="stylesheet" href="style.css">
 	</head>
 	<body>
-		<div class="tweets-container">
-			<p>Loading...</p>
+		<div class="carousel">
+		  <div class="carousel-cell">1</div>
+		  <div class="carousel-cell">2</div>
 		</div>
 		<script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-		<!-- <script src="js/tweets.js"></script> -->
+		<script src="https://npmcdn.com/flickity@1.2/dist/flickity.pkgd.min.js"></script>
 		<script src='https://code.responsivevoice.org/responsivevoice.js'></script>
+
+		<script type="text/javascript">
+			$('.carousel').flickity({
+			  // options
+			  cellAlign: 'left',
+			  contain: true,
+			  prevNextButtons: false,
+			  pageDots: false,
+			});
+
+			$(document).ready(function() {
+				$('.carousel-cell').each(function (index, value) { 
+				  responsiveVoice.speak("hello world");
+				  console.log(index); 
+				});
+			});
+
+		</script>
 	</body>
 </html>

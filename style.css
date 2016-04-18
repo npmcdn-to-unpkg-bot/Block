@@ -1,0 +1,20 @@
+body {
+	padding:0px;
+	margin:0px;
+}
+
+.carousel {
+	height:100vh;
+}
+
+.carousel-cell {
+	background: blue;
+	height:100%;
+	width:100%;
+	font-size:2em;
+	color:#fff;
+	display:flex;
+	justify-content: center;
+	align-items: center;
+}
+
