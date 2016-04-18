@@ -8,8 +8,20 @@
 		<div class="tweets-container">
 			<p>Loading...</p>
 		</div>
-		<script src="js/jquery-1.11.1.min.js"></script>
-		<script src="js/tweets.js"></script>
+		<script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+		<!-- <script src="js/tweets.js"></script> -->
 		<script src='https://code.responsivevoice.org/responsivevoice.js'></script>
+
+		<script type="text/javascript">
+				var ref = new Firebase("https://facebookblock.firebaseio.com");
+				ref.authWithOAuthPopup("twitter", function(error, authData) {
+				  if (error) {
+				    console.log("Login Failed!", error);
+				  } else {
+				    console.log("Authenticated successfully with payload:", authData);
+				  }
+				});
+		</script>
 	</body>
 </html>
