@@ -2,18 +2,22 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Twitter v1.1 API - A JavaScript and PHP solution</title>
+		<title>Facebook Feed</title>
 		<script src='https://code.responsivevoice.org/responsivevoice.js'></script>
 		<link rel="stylesheet" href="https://npmcdn.com/flickity@1.2/dist/flickity.min.css">
 		<link rel="stylesheet" href="style.css">
 	</head>
 	<body>
 		<div class="carousel">
-		  <div class="carousel-cell cellid-0"><h1>This is the first</h1></div>
-		  <div class="carousel-cell cellid-1 "><h1>This is the second</h1></div>
-		  <div class="carousel-cell cellid-2"><h1>Third</h1></div>
-		  <div class="carousel-cell cellid-3"><h1>Fourth</h1></div>
-		  <div class="carousel-cell cellid-4"><h1>And so on.</h1></div>
+		  <div class="carousel-cell cellid-0" style="background-image: url('http://www.wallpaperawesome.com/wallpapers-awesome/wallpapers-people-men-women-child-baby-awesome/wallpaper-beach-happy-people.jpg')">
+		  	<h1>Robin säger, Idag har vi hopppat i vatten framför en solnedgång. Gud vad kul! Hoppas ni är avundsjuka där hemma.</h1>
+		  </div>
+		  <div class="carousel-cell cellid-1" style="background-image: url('https://hereandnowresorts.files.wordpress.com/2010/09/now_family.jpg')">
+		  	<h1>Robin säger: Nu är ni allt bra avundsjuka va? Semester semester semester!!</h1>
+		  </div>
+		  <div class="carousel-cell cellid-2" style="background-image: url('http://officesnapshots.com/wp-content/uploads/2016/01/instacart-office-design-10.jpg')">
+		  	<h1>Johanna säger: På kontoret idag igen. Jag hoppas att den här dagen är över snart. Hejsvejs!</h1>
+		  </div>
 		</div>
 		<script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
@@ -22,13 +26,16 @@
 		<script type="text/javascript">
  			responsiveVoice.OnVoiceReady = function() {
 
+ 					responsiveVoice.setDefaultVoice("Swedish Female");
  					var $carousel = $('.carousel').flickity({
-					  // options
 					  cellAlign: 'left',
 					  contain: true,
 					  prevNextButtons: false,
 					  pageDots: false,
+					  wrapAround: true,
 					});
+
+					var voicelist = responsiveVoice.getVoices();
 
 					var flkty = $carousel.data('flickity');
 
@@ -46,14 +53,12 @@
 					    onend: voiceEndCallback
 					}
 
-					responsiveVoice.speak($('.cellid-0').text(), "UK English Female", parameters)
+					responsiveVoice.speak($('.cellid-0').text(), "Swedish Female", parameters)
 
 					$carousel.on( 'cellSelect', function() {
 					  console.log( $('.cellid-'+ flkty.selectedIndex).text() );
 					  var str = $('.cellid-'+ flkty.selectedIndex).text();
-					  responsiveVoice.speak(str, "UK English Female", parameters)
-					 	
-
+					  responsiveVoice.speak(str, "Swedish Female", parameters)
 					})
 
  					var str = "";
