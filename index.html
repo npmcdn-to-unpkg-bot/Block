@@ -59,7 +59,7 @@
 					$carousel.on( 'cellSelect', function() {
 					  console.log( $('.cellid-'+ flkty.selectedIndex).text() );
 					  var str = $('.cellid-'+ flkty.selectedIndex).text();
-					  responsiveVoice.speak(str, "Swedish Female", parameters)
+					  responsiveVoice.speak(str, "Swedish Female", parameters, {rate: 0})
 					})
 
  					var str = "";
